@@ -8,7 +8,7 @@ def convert(filename, filetype):
     if not "\._" in ffilename:
         if not os.path.isfile(os.curdir + "/alac/" + ffilename + ".m4a"):
             print "Converting " + ffilename + filetype
-            os.system("ffmpeg -i \"" + ffilename + filetype + "\" -c:a alac \"" + os.curdir + "/alac/" + ffilename + ".m4a\" -loglevel quiet")
+            os.system("ffmpeg -i \"" + ffilename + filetype + "\" -c:a alac -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" \"" + os.curdir + "/alac/" + ffilename + ".m4a\" -loglevel quiet")
             print "Done"
         else:
             print ffilename + ".m4a exists. Skipping."
